@@ -22,10 +22,11 @@ public class menuManager : MonoBehaviour
     }
 
     void flashTheText() {
-        if (flashText.activeInHierarchy)
+        if (flashText.activeInHierarchy){
             flashText.SetActive(false);
-        else
+        } else {
             flashText.SetActive(true);
+        }
 
     }
 }
