@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,9 @@ public class Fish : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Debug.Log(getStringTime());  // TEST
+        // PlayerPrefs.SetString("then", "02/16/2022 12:01:01");  // TEST
+        PlayerPrefs.SetString("then", getStringTime());
         updateStatus();
     }
 
@@ -42,10 +46,18 @@ public class Fish : MonoBehaviour
             _happiness = PlayerPrefs.GetInt("_happiness");
         }
 
+        if (!PlayerPrefs.HasKey("then")) {
+            PlayerPrefs.SetString("then", getStringTime());
+        }
+
+        // Debug.Log(getTimeSpan().ToString());  // TEST
+        // Debug.Log(getTimeSpan().TotalHours);  // TEST
+
+
         if (_serverTime) {
             updateServer();
         } else {
-            updateDevice();
+            InvokeRepeating("updateDevice", 0f, 30f);
         }
     }
 
@@ -54,7 +66,20 @@ public class Fish : MonoBehaviour
     }
 
     void updateDevice(){
+        PlayerPrefs.SetString("then", getStringTime());
+    }
 
+    TimeSpan getTimeSpan(){
+        if(_serverTime){
+            return new TimeSpan();
+        } else{
+            return DateTime.Now - Convert.ToDateTime(PlayerPrefs.GetString("then"));
+        }
+    }
+
+    string getStringTime(){
+        DateTime now = DateTime.Now;
+        return now.Month + "/" + now.Day + "/" + now.Year + " " + now.Hour + ":" + now.Minute + ":" + now.Second;
     }
 
     public int hunger{
@@ -66,4 +91,6 @@ public class Fish : MonoBehaviour
         get{ return _happiness; }
         set{ _happiness = value; }
     }
+
+
 }
