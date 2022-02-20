@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class Fish : MonoBehaviour
 {
-    [SerializeField]
-    private int _hunger;
+    [SerializeField] private int _hunger;
 
-    [SerializeField]
-    private int _happiness;
+    [SerializeField] private int _happiness;
 
-    private bool _serverTime;
+    [SerializeField] private bool _serverTime;
 
 
 
@@ -19,8 +17,8 @@ public class Fish : MonoBehaviour
     void Start()
     {
         // Debug.Log(getStringTime());  // TEST
-        // PlayerPrefs.SetString("then", "02/16/2022 12:01:01");  // TEST
-        PlayerPrefs.SetString("then", getStringTime());
+        PlayerPrefs.SetString("then", "02/20/2022 06:50:00");  // TEST
+        // PlayerPrefs.SetString("then", getStringTime());  // WORKING
         updateStatus();
     }
 
@@ -53,7 +51,27 @@ public class Fish : MonoBehaviour
         // Debug.Log(getTimeSpan().ToString());  // TEST
         // Debug.Log(getTimeSpan().TotalHours);  // TEST
 
+        // TIME
+        TimeSpan ts = getTimeSpan();
+        Debug.Log(ts.TotalMinutes);  // TEST
 
+        // HUNGER
+        _hunger -= (int)(ts.TotalMinutes/5);
+        if(_hunger < 0 ){
+            _hunger = 0;
+        }
+        Debug.Log(_hunger);  // TEST
+
+        // HAPPINESS
+        _happiness -= (int)(_hunger*0.2);
+        if(_happiness < 0 ){
+            _happiness = 0;
+        }
+        Debug.Log(_happiness);  // TEST
+
+
+
+        // UPDATE TIME
         if (_serverTime) {
             updateServer();
         } else {
