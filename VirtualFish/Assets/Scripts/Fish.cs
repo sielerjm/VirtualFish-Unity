@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Fish : MonoBehaviour
 {
+    [SerializeField]
     private int _hunger;
+
+    [SerializeField]
     private int _happiness;
 
     private bool _serverTime;
@@ -52,5 +55,15 @@ public class Fish : MonoBehaviour
 
     void updateDevice(){
 
+    }
+
+    public int hunger{
+        get{ return _hunger; }
+        set{ _hunger = value; }
+    }
+
+    public int happiness{
+        get{ return _happiness; }
+        set{ _happiness = value; }
     }
 }
