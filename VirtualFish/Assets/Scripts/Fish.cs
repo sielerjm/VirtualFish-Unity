@@ -11,6 +11,8 @@ public class Fish : MonoBehaviour
 
     [SerializeField] private bool _serverTime;
 
+    private int _clickCount;
+
 
 
     // Start is called before the first frame update
@@ -23,10 +25,36 @@ public class Fish : MonoBehaviour
     }
 
     // Update is called once per frame
-    // void Update()
-    // {
-    //
-    // }
+    void Update() {
+        if(Input.GetMouseButtonUp(0)){
+            Debug.Log("Clicked");  // TEST
+
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+
+            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+            if (hit.collider != null) {
+                Debug.Log(hit.collider.gameObject.name);  // TEST
+                hit.collider.attachedRigidbody.AddForce(Vector2.up);
+            }
+
+            Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));  // TEST
+
+            if(hit){
+                // Debug.Log($"Hit: " +  hit.transform.gameObject.name);  // TEST
+                // Debug.Log($"Hit obj: " +  hit.transform.gameObject.tag);  // TEST
+                if(hit.transform.gameObject.tag == "fish"){
+                    _clickCount ++;
+                    Debug.Log($"Click Count: " +  _clickCount);  // TEST
+                    if (_clickCount >= 3) {
+                        _clickCount = 0;
+                        updateHappiness(1);
+                    }
+                }
+            }
+        }
+
+    }
 
     void updateStatus(){
 
@@ -53,21 +81,21 @@ public class Fish : MonoBehaviour
 
         // TIME
         TimeSpan ts = getTimeSpan();
-        Debug.Log(ts.TotalMinutes);  // TEST
+        Debug.Log($"Total Minutes: " + ts.TotalMinutes);  // TEST
 
         // HUNGER
         _hunger -= (int)(ts.TotalMinutes/5);
         if(_hunger < 0 ){
             _hunger = 0;
         }
-        Debug.Log(_hunger);  // TEST
+        Debug.Log($"Hunger: " + _hunger);  // TEST
 
         // HAPPINESS
         _happiness -= (int)(_hunger*0.2);
         if(_happiness < 0 ){
             _happiness = 0;
         }
-        Debug.Log(_happiness);  // TEST
+        Debug.Log($"Happiness: " + _happiness);  // TEST
 
 
 
@@ -108,6 +136,14 @@ public class Fish : MonoBehaviour
     public int happiness{
         get{ return _happiness; }
         set{ _happiness = value; }
+    }
+
+    public void updateHappiness(int i){
+        happiness += i;
+        if (happiness > 100){
+            happiness = 100;
+        }
+
     }
 
 
