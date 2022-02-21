@@ -34,7 +34,7 @@ public class Fish : MonoBehaviour
 
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
             if (hit.collider != null) {
-                Debug.Log(hit.collider.gameObject.name);  // TEST
+                // Debug.Log(hit.collider.gameObject.name);  // TEST
                 hit.collider.attachedRigidbody.AddForce(Vector2.up);
             }
 
@@ -45,10 +45,11 @@ public class Fish : MonoBehaviour
                 // Debug.Log($"Hit obj: " +  hit.transform.gameObject.tag);  // TEST
                 if(hit.transform.gameObject.tag == "fish"){
                     _clickCount ++;
-                    Debug.Log($"Click Count: " +  _clickCount);  // TEST
+                    // Debug.Log($"Click Count: " +  _clickCount);  // TEST
                     if (_clickCount >= 3) {
                         _clickCount = 0;
                         updateHappiness(1);
+                        Debug.Log($"Happiness updated by 1");  // TEST
                     }
                 }
             }
