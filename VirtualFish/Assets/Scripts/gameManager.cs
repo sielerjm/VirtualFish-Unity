@@ -7,6 +7,9 @@ public class gameManager : MonoBehaviour
 {
     public GameObject happinessText;
     public GameObject hungerText;
+
+    public GameObject namePanel;
+    public GameObject nameInput;
     public GameObject nameText;
 
     public GameObject fish;
@@ -23,4 +26,14 @@ public class gameManager : MonoBehaviour
         hungerText.GetComponent<Text>().text = fish.GetComponent<Fish>().hunger.ToString();
         nameText.GetComponent<Text>().text = fish.GetComponent<Fish>().name;  // Doesn't need ".ToString" because name is a string
     }
+
+    public void triggerNamePanel(bool b){
+        namePanel.SetActive(!namePanel.activeInHierarchy);
+
+        if(b){
+            fish.GetComponent<Fish>().name = nameInput.GetComponent<InputField>().text;
+            PlayerPrefs.SetString("name", fish.GetComponent<Fish>().name);
+        }
+    }
+
 }
