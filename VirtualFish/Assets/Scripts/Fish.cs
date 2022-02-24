@@ -158,5 +158,13 @@ public class Fish : MonoBehaviour
 
     }
 
+    public void saveGame(){
+        if(!_serverTime){
+            updateDevice();
+        }
+        PlayerPrefs.SetInt("_hunger", _hunger);
+        PlayerPrefs.SetInt("_happiness", _happiness);
+    }
+
 
 }

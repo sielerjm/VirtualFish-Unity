@@ -36,4 +36,29 @@ public class gameManager : MonoBehaviour
         }
     }
 
+    public void buttonBehavior(int i){
+        switch(i){
+
+            // Feed
+            case(0):
+                default:
+                break;
+
+            // Care (clean tank, give medicine)
+            case(1):
+                break;
+
+            // Play (mini-game)
+            case(2):
+                break;
+
+            // Quit
+            case(3):
+                fish.GetComponent<Fish>().saveGame();
+                Application.Quit();
+                break;
+
+        }
+    }
+
 }
