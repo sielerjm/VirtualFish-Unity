@@ -9,7 +9,9 @@ public class Fish : MonoBehaviour
 
     [SerializeField] private int _happiness;
 
-    [SerializeField] private bool _serverTime;
+    [SerializeField] private string _name;
+
+    private bool _serverTime;
 
     private int _clickCount;
 
@@ -19,9 +21,13 @@ public class Fish : MonoBehaviour
     void Start()
     {
         // Debug.Log(getStringTime());  // TEST
-        PlayerPrefs.SetString("then", "02/20/2022 12:50:00");  // TEST
+        PlayerPrefs.SetString("then", "02/21/2022 12:50:00");  // TEST
         // PlayerPrefs.SetString("then", getStringTime());  // WORKING
         updateStatus();
+        if(!PlayerPrefs.HasKey("name")){
+            PlayerPrefs.SetString("name", "Fishy");
+        }
+        _name = PlayerPrefs.GetString("name");
     }
 
     // Update is called once per frame
@@ -137,6 +143,11 @@ public class Fish : MonoBehaviour
     public int happiness{
         get{ return _happiness; }
         set{ _happiness = value; }
+    }
+
+    public string name{
+        get { return _name;}
+        set {_name = value;}
     }
 
     public void updateHappiness(int i){

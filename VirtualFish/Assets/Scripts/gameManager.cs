@@ -7,6 +7,7 @@ public class gameManager : MonoBehaviour
 {
     public GameObject happinessText;
     public GameObject hungerText;
+    public GameObject nameText;
 
     public GameObject fish;
     // Start is called before the first frame update
@@ -20,5 +21,6 @@ public class gameManager : MonoBehaviour
     {
         happinessText.GetComponent<Text>().text = fish.GetComponent<Fish>().happiness.ToString();
         hungerText.GetComponent<Text>().text = fish.GetComponent<Fish>().hunger.ToString();
+        nameText.GetComponent<Text>().text = fish.GetComponent<Fish>().name;  // Doesn't need ".ToString" because name is a string
     }
 }
