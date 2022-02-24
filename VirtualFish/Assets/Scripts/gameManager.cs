@@ -12,6 +12,9 @@ public class gameManager : MonoBehaviour
     public GameObject nameInput;
     public GameObject nameText;
 
+    public GameObject foodPanel;
+    public Sprite[] foodIcons;
+
     public GameObject fish;
     // Start is called before the first frame update
     void Start()
@@ -41,7 +44,8 @@ public class gameManager : MonoBehaviour
 
             // Feed
             case(0):
-                default:
+            default:
+                foodPanel.SetActive(!foodPanel.activeInHierarchy);
                 break;
 
             // Care (clean tank, give medicine)
@@ -58,6 +62,16 @@ public class gameManager : MonoBehaviour
                 Application.Quit();
                 break;
 
+        }
+    }
+
+    public void selectFood(int i){
+        toggle(foodPanel);
+    }
+
+    public void toggle(GameObject g){
+        if (g.activeInHierarchy){
+            g.SetActive(false);
         }
     }
 
