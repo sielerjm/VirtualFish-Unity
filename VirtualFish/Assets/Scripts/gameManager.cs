@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Finished Hunter Heidenreich Tutorial: youtu.be/JUgy7Lm3hH8
+
 public class gameManager : MonoBehaviour
 {
     public GameObject happinessText;

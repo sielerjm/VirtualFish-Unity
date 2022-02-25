@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Finished Hunter Heidenreich Tutorial: youtu.be/JUgy7Lm3hH8
+
 public class Fish : MonoBehaviour
 {
     [SerializeField] private int _hunger;
