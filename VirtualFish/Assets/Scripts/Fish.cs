@@ -134,7 +134,7 @@ public class Fish : MonoBehaviour
 
         // HAPPINESS
         Debug.Log($"Happiness pre-adjust: " + _happiness);  // TEST
-        _happiness -= (int)(ts.TotalMinutes/5);
+        _happiness -= (int)(ts.TotalMinutes/3);
         if(_happiness < 0 ){
             _happiness = 0;
         }

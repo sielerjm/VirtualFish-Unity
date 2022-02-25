@@ -1,10 +1,10 @@
 # VirtualFish-Unity
 Tamagotchi-like game, where you take care of a fish.
 
-<img style="display: block; 
+<img style="display: block;
            margin-left: auto;
            margin-right: auto;"
-     src="Media/Gifs/VirtualFish-Preview_02202022.GIF">
+     src="Media/Gifs/VirtualFish-Preview_02242022.GIF">
 
 ## Credits:
 
