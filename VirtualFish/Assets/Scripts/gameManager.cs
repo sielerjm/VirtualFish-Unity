@@ -19,12 +19,16 @@ public class gameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        // Debug.Log($"gameManager > Start() "); // + ts.TotalMinutes);  // TEST
+        // happinessText.GetComponent<Text>().text = fish.GetComponent<Fish>().happiness.ToString();
+        // hungerText.GetComponent<Text>().text = fish.GetComponent<Fish>().hunger.ToString();
+        // nameText.GetComponent<Text>().text = fish.GetComponent<Fish>().name;  // Doesn't need ".ToString" because name is a string
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Debug.Log($"gameManager > Update() "); // + ts.TotalMinutes);  // TEST
         happinessText.GetComponent<Text>().text = fish.GetComponent<Fish>().happiness.ToString();
         hungerText.GetComponent<Text>().text = fish.GetComponent<Fish>().hunger.ToString();
         nameText.GetComponent<Text>().text = fish.GetComponent<Fish>().name;  // Doesn't need ".ToString" because name is a string

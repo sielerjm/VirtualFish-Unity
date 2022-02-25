@@ -20,8 +20,10 @@ public class Fish : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log($"Fish.cs > Start() "); // + ts.TotalMinutes);  // TEST
+
         // Debug.Log(getStringTime());  // TEST
-        PlayerPrefs.SetString("then", "02/24/2022 12:50:00");  // TEST
+        PlayerPrefs.SetString("then", "02/24/2022 15:30:00");  // TEST
         // PlayerPrefs.SetString("then", getStringTime());  // WORKING
         updateStatus();
         if(!PlayerPrefs.HasKey("name")){
@@ -32,6 +34,9 @@ public class Fish : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+
+        // Debug.Log($"Fish.cs > Update() "); // + ts.TotalMinutes);  // TEST
+
         if(Input.GetMouseButtonUp(0)){
             Debug.Log("Clicked");  // TEST
 
@@ -67,15 +72,19 @@ public class Fish : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("_hunger")) {
             _hunger = 100;
+            Debug.Log($"updateStatus > if > !PlayerPrefs.HasKey('_hunger'): ... "); // + ts.TotalMinutes);  // TEST
             PlayerPrefs.SetInt("_hunger", _hunger);
         } else {
+            Debug.Log($"updateStatus > !PlayerPrefs.HasKey('_hunger') > else: ... "); // + ts.TotalMinutes);  // TEST
             _hunger = PlayerPrefs.GetInt("_hunger");
         }
 
         if (!PlayerPrefs.HasKey("_happiness")) {
             _happiness = 100;
+            Debug.Log($"updateStatus > if > !PlayerPrefs.HasKey('_happiness'): ... "); // + ts.TotalMinutes);  // TEST
             PlayerPrefs.SetInt("_happiness", _happiness);
         } else {
+            Debug.Log($"updateStatus > !PlayerPrefs.HasKey('_happiness') > else: ... "); // + ts.TotalMinutes);  // TEST
             _happiness = PlayerPrefs.GetInt("_happiness");
         }
 
@@ -91,18 +100,21 @@ public class Fish : MonoBehaviour
         Debug.Log($"Total Minutes: " + ts.TotalMinutes);  // TEST
 
         // HUNGER
-        _hunger -= (int)(ts.TotalMinutes/5);
+        Debug.Log($"Hunger pre-adjust: " + _hunger);  // TEST
+
+        _hunger -= (int)(ts.TotalHours*2);
         if(_hunger < 0 ){
             _hunger = 0;
         }
-        Debug.Log($"Hunger: " + _hunger);  // TEST
+        Debug.Log($"Hunger post-adjust: " + _hunger);  // TEST
 
         // HAPPINESS
+        Debug.Log($"Happiness pre-adjust: " + _happiness);  // TEST
         _happiness -= (int)(_hunger*0.25);
         if(_happiness < 0 ){
             _happiness = 0;
         }
-        Debug.Log($"Happiness: " + _happiness);  // TEST
+        Debug.Log($"Happiness post-adjust: " + _happiness);  // TEST
 
 
 
