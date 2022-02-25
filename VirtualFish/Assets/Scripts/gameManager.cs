@@ -39,6 +39,26 @@ public class gameManager : MonoBehaviour
         }
     }
 
+    public void triggerFoodPanel(bool b){
+        // foodPanel.SetActive(!foodPanel.activeInHierarchy);
+        toggle(foodPanel);
+
+        if(b){
+
+            // If player pressed flakes
+            fish.GetComponent<Fish>().updateHappiness(5);
+            Debug.Log($"Happiness updated by 5");  // TEST
+            fish.GetComponent<Fish>().updateHunger(20);
+            Debug.Log($"Hunger updated by 20");  // TEST
+
+            // If player pressed candy
+            fish.GetComponent<Fish>().updateHappiness(10);
+            Debug.Log($"Happiness updated by 1");  // TEST
+            fish.GetComponent<Fish>().updateHunger(1);
+            Debug.Log($"Hunger updated by 1");  // TEST
+        }
+    }
+
     public void buttonBehavior(int i){
         switch(i){
 
@@ -67,6 +87,24 @@ public class gameManager : MonoBehaviour
 
     public void selectFood(int i){
         toggle(foodPanel);
+
+        if(i == 0){
+
+            // If player pressed flakes
+            fish.GetComponent<Fish>().updateHappiness(5);
+            Debug.Log($"Happiness updated by 5");  // TEST
+            fish.GetComponent<Fish>().updateHunger(20);
+            Debug.Log($"Hunger updated by 20");  // TEST
+
+        } else if (i == 1) {
+            // If player pressed candy
+            fish.GetComponent<Fish>().updateHappiness(10);
+            Debug.Log($"Happiness updated by 1");  // TEST
+            fish.GetComponent<Fish>().updateHunger(1);
+            Debug.Log($"Hunger updated by 1");  // TEST
+        } else {
+            
+        }
     }
 
     public void toggle(GameObject g){
