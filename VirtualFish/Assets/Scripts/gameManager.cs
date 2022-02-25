@@ -18,6 +18,9 @@ public class gameManager : MonoBehaviour
     public GameObject foodPanel;
     public Sprite[] foodIcons;
 
+    public GameObject carePanel;
+    public Sprite[] careIcons;
+
     public GameObject fish;
     // Start is called before the first frame update
     void Start()
@@ -78,6 +81,7 @@ public class gameManager : MonoBehaviour
 
             // Care (clean tank, give medicine)
             case(1):
+                carePanel.SetActive(!carePanel.activeInHierarchy);
                 break;
 
             // Play (mini-game)
@@ -110,6 +114,29 @@ public class gameManager : MonoBehaviour
             Debug.Log($"Happiness updated by 1");  // TEST
             fish.GetComponent<Fish>().updateHunger(1);
             Debug.Log($"Hunger updated by 1");  // TEST
+        } else {
+
+        }
+    }
+
+    public void selectCare(int i){
+        toggle(carePanel);
+
+        if(i == 0){
+            // If player pressed antibiotics
+            Debug.Log($"Pressed antibiotics");  // TEST
+            // fish.GetComponent<Fish>().updateHappiness(5);
+            // Debug.Log($"Happiness updated by 5");  // TEST
+            // fish.GetComponent<Fish>().updateHunger(20);
+            // Debug.Log($"Hunger updated by 20");  // TEST
+
+        } else if (i == 1) {
+            // If player pressed clean tank
+            Debug.Log($"Pressed clean tank");  // TEST
+            // fish.GetComponent<Fish>().updateHappiness(10);
+            // Debug.Log($"Happiness updated by 1");  // TEST
+            // fish.GetComponent<Fish>().updateHunger(1);
+            // Debug.Log($"Hunger updated by 1");  // TEST
         } else {
 
         }
