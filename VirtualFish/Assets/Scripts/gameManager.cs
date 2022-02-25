@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class gameManager : MonoBehaviour
 {
     public GameObject happinessText;
-    public GameObject hungerText;
+    // public GameObject hungerText;
+    public GameObject hungeryText;
 
     public GameObject namePanel;
     public GameObject nameInput;
@@ -32,7 +33,8 @@ public class gameManager : MonoBehaviour
     {
         // Debug.Log($"gameManager > Update() "); // + ts.TotalMinutes);  // TEST
         happinessText.GetComponent<Text>().text = fish.GetComponent<Fish>().happiness.ToString();
-        hungerText.GetComponent<Text>().text = fish.GetComponent<Fish>().hunger.ToString();
+        // hungerText.GetComponent<Text>().text = fish.GetComponent<Fish>().hunger.ToString();
+        hungeryText.GetComponent<Text>().text = fish.GetComponent<Fish>().hungery.ToString();  // TEST
         nameText.GetComponent<Text>().text = fish.GetComponent<Fish>().name;  // Doesn't need ".ToString" because name is a string
     }
 

@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 124934211}
   m_Layer: 5
   m_Name: Food Panel
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -941,6 +941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hunger: 100
+  _hungery: 0
   _happiness: 100
   _name: 
 --- !u!70 &213980762
@@ -3354,6 +3355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   happinessText: {fileID: 574514197}
   hungerText: {fileID: 1196226487}
+  hungeryText: {fileID: 1196226487}
   namePanel: {fileID: 1504416387}
   nameInput: {fileID: 2049680179}
   nameText: {fileID: 483821163}

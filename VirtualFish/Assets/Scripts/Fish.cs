@@ -7,7 +7,9 @@ using UnityEngine;
 
 public class Fish : MonoBehaviour
 {
-    [SerializeField] private int _hunger;
+    // [SerializeField] private int _hunger;
+
+    [SerializeField] private int _hungery;
 
     [SerializeField] private int _happiness;
 
@@ -27,7 +29,9 @@ public class Fish : MonoBehaviour
         // Debug.Log(getStringTime());  // TEST
         PlayerPrefs.SetString("then", "02/24/2022 15:30:00");  // TEST
         // PlayerPrefs.SetString("then", getStringTime());  // WORKING
+
         updateStatus();
+
         if(!PlayerPrefs.HasKey("name")){
             PlayerPrefs.SetString("name", "Fishy");
         }
@@ -72,13 +76,22 @@ public class Fish : MonoBehaviour
 
     void updateStatus(){
 
-        if (!PlayerPrefs.HasKey("_hunger")) {
-            _hunger = 100;
-            Debug.Log($"updateStatus > if > !PlayerPrefs.HasKey('_hunger'): ... "); // + ts.TotalMinutes);  // TEST
-            PlayerPrefs.SetInt("_hunger", _hunger);
+        // if (!PlayerPrefs.HasKey("_hunger")) {
+        //     _hunger = 100;
+        //     Debug.Log($"updateStatus > if > !PlayerPrefs.HasKey('_hunger'): ... "); // + ts.TotalMinutes);  // TEST
+        //     PlayerPrefs.SetInt("_hunger", _hunger);
+        // } else {
+        //     Debug.Log($"updateStatus > !PlayerPrefs.HasKey('_hunger') > else: ... "); // + ts.TotalMinutes);  // TEST
+        //     _hunger = PlayerPrefs.GetInt("_hunger");
+        // }
+
+        if (!PlayerPrefs.HasKey("_hungery")) {
+            _hungery = 100;
+            Debug.Log($"updateStatus > if > !PlayerPrefs.HasKey('_hungery'): ... "); // + ts.TotalMinutes);  // TEST
+            PlayerPrefs.SetInt("_hungery", _hungery);
         } else {
-            Debug.Log($"updateStatus > !PlayerPrefs.HasKey('_hunger') > else: ... "); // + ts.TotalMinutes);  // TEST
-            _hunger = PlayerPrefs.GetInt("_hunger");
+            Debug.Log($"updateStatus > !PlayerPrefs.HasKey('_hungery') > else: ... "); // + ts.TotalMinutes);  // TEST
+            _hungery = PlayerPrefs.GetInt("_hungery");
         }
 
         if (!PlayerPrefs.HasKey("_happiness")) {
@@ -101,18 +114,27 @@ public class Fish : MonoBehaviour
         TimeSpan ts = getTimeSpan();
         Debug.Log($"Total Minutes: " + ts.TotalMinutes);  // TEST
 
-        // HUNGER
-        Debug.Log($"Hunger pre-adjust: " + _hunger);  // TEST
+        // // HUNGER
+        // Debug.Log($"Hunger pre-adjust: " + _hunger);  // TEST
+        //
+        // _hunger -= (int)(ts.TotalMinutes/5);
+        // if(_hunger < 0 ){
+        //     _hunger = 0;
+        // }
+        // Debug.Log($"Hunger post-adjust: " + _hunger);  // TEST
 
-        _hunger -= (int)(ts.TotalHours*2);
-        if(_hunger < 0 ){
-            _hunger = 0;
+        // HUNGERY
+        Debug.Log($"Hungery pre-adjust: " + _hungery);  // TEST
+
+        _hungery -= (int)(ts.TotalMinutes/5);
+        if(_hungery < 0 ){
+            _hungery = 0;
         }
-        Debug.Log($"Hunger post-adjust: " + _hunger);  // TEST
+        Debug.Log($"Hungery post-adjust: " + _hungery);  // TEST
 
         // HAPPINESS
         Debug.Log($"Happiness pre-adjust: " + _happiness);  // TEST
-        _happiness -= (int)(_hunger*0.25);
+        _happiness -= (int)(ts.TotalMinutes/5);
         if(_happiness < 0 ){
             _happiness = 0;
         }
@@ -149,9 +171,14 @@ public class Fish : MonoBehaviour
         return now.Month + "/" + now.Day + "/" + now.Year + " " + now.Hour + ":" + now.Minute + ":" + now.Second;
     }
 
-    public int hunger{
-        get{ return _hunger; }
-        set{ _hunger = value; }
+    // public int hunger{
+    //     get{ return _hunger; }
+    //     set{ _hunger = value; }
+    // }
+
+    public int hungery{
+        get{ return _hungery; }
+        set{ _hungery = value; }
     }
 
     public int happiness{
@@ -173,9 +200,9 @@ public class Fish : MonoBehaviour
     }
 
     public void updateHunger(int i){
-        hunger += i;
-        if (hunger > 100){
-            hunger = 100;
+        hungery += i;
+        if (hungery > 100){
+            hungery = 100;
         }
 
     }
@@ -184,7 +211,7 @@ public class Fish : MonoBehaviour
         if(!_serverTime){
             updateDevice();
         }
-        PlayerPrefs.SetInt("_hunger", _hunger);
+        PlayerPrefs.SetInt("_hungery", _hungery);
         PlayerPrefs.SetInt("_happiness", _happiness);
     }
 
