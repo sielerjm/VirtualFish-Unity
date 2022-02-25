@@ -27,7 +27,7 @@ public class Fish : MonoBehaviour
         Debug.Log($"Fish.cs > Start() "); // + ts.TotalMinutes);  // TEST
 
         // Debug.Log(getStringTime());  // TEST
-        PlayerPrefs.SetString("then", "02/24/2022 15:30:00");  // TEST
+        PlayerPrefs.SetString("then", "02/24/2022 16:30:00");  // TEST
         // PlayerPrefs.SetString("then", getStringTime());  // WORKING
 
         updateStatus();
