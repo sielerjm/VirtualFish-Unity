@@ -1,7 +1,7 @@
 # VirtualFish-Unity
-Tamagotchi-like game, where you learn how to take care of a fish. 
+Tamagotchi-like game, where you take care of a fish. 
 
-You can play an early-alpha version here: [https://sielerjm.github.io/VirtualFish-Unity/](https://sielerjm.github.io/VirtualFish-Unity/)
+You can play a rough version here: [https://sielerjm.github.io/VirtualFish-Unity/](https://sielerjm.github.io/VirtualFish-Unity/)
 
 <img style="display: block;
            margin-left: auto;
