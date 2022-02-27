@@ -1,4 +1,4 @@
-# VirtualFish-Unity
+# VirtualFish-Unity (Development)
 Tamagotchi-like game, where you take care of a fish. 
 
 You can play a rough version here: [https://sielerjm.github.io/VirtualFish-Unity/](https://sielerjm.github.io/VirtualFish-Unity/)
